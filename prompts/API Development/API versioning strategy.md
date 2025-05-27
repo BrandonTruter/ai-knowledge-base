@@ -1,0 +1,2 @@
+I need to implement API versioning in my Rails application. We currently have [describe current API]. 
+Show me how to implement versioning using [namespace/header/param] approach with examples of how controllers should be organized.
