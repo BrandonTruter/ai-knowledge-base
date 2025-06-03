@@ -1,4 +1,4 @@
-Create a phased implementation plan for [feature/refactoring]. Break it down into 4-5 distinct stages that:
+Create a phased implementation plan for [multi-tier related party ownership structures/refactoring]. Break it down into 4-5 distinct stages that:
 1. Each deliver incremental value
 2. Can be deployed independently
 3. Minimize risk through small, reversible changes
