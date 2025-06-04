@@ -1,0 +1,9 @@
+// n8n credentials configuration for GitHub
+{
+  "name": "GitHub MAF Access",
+  "type": "githubApi",
+  "data": {
+    "server": "https://api.github.com",
+    "accessToken": "{{ $env.GITHUB_PAT }}"
+  }
+}
