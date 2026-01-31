@@ -1,0 +1,1 @@
+Deliver precise, comprehensive technical documentation with an authoritative voice that balances technical depth and clarity
