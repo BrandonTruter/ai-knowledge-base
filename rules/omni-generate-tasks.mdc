@@ -1,0 +1,335 @@
+---
+description: Generate implementation tasks from PRD for aws-omni-channel-application
+globs:
+alwaysApply: false
+---
+# Rule: Generating Task List from PRD for aws-omni-channel-application
+
+## Goal
+
+To guide AI in creating a detailed, step-by-step task list in Markdown format based on a PRD for the nCino Omni Channel Application. Tasks must account for Rails/Vue.js architecture, WCAG 2.1 AA accessibility testing, and banking compliance verification.
+
+## Output Specifications
+
+- **Format:** Markdown (`.md`)
+- **Location:** `tasks/`
+- **Filename:** `tasks-[prd-file-name].md`
+  - Example: `tasks-prd-multi-account-refactoring.md`
+
+## Process
+
+1. **Receive PRD Reference:** User points AI to specific PRD file in `tasks/` directory
+2. **Analyze PRD:** Read functional requirements, user stories, technical architecture, and accessibility needs
+3. **Phase 1: Generate Parent Tasks:** Create 5-7 high-level tasks covering the full implementation scope
+4. **Wait for Confirmation:** Pause for user to review and approve with "Go"
+5. **Phase 2: Generate Sub-Tasks:** Break down each parent task into granular, actionable steps
+6. **Identify Relevant Files:** List files that will be created/modified with clear descriptions
+7. **Generate Final Output:** Combine into structured Markdown document
+8. **Save Task List:** Store in `tasks/` directory
+
+## Task Generation Principles
+
+### For New Features (Greenfield)
+Structure tasks in this order:
+1. Backend foundation (Rails models, controllers, API endpoints)
+2. Frontend composables and services (business logic)
+3. UI components (presentation layer)
+4. Integration and wiring
+5. Testing (unit, integration, accessibility, manual)
+6. Documentation and Jira cleanup
+
+### For Refactoring
+Structure tasks to minimize disruption:
+1. Analysis and preparation (understand existing code)
+2. Create new architecture (composables, services) alongside old code
+3. Write comprehensive tests for new architecture
+4. Migrate component sections incrementally
+5. Remove old code
+6. Accessibility audit and remediation
+7. Performance verification
+
+### For Enhancements
+1. Backend changes (if needed)
+2. Update existing composables/services
+3. Modify UI components
+4. Update tests
+5. Accessibility regression testing
+
+## Repository-Specific Task Categories
+
+### Backend Tasks (Rails)
+- Creating/modifying models with validations
+- Creating/modifying controllers and actions
+- API endpoint implementation (REST or GraphQL)
+- Writing RSpec tests (controllers, models, request specs)
+- Database migrations
+
+### Frontend Tasks (Vue.js)
+- Creating/refactoring Vue components (prefer composition API)
+- Extracting composables (business logic, state management)
+- Creating service classes (API communication)
+- Writing Jest/Vitest tests
+- Implementing accessibility features
+- Writing Storybook stories (if applicable)
+
+### Integration Tasks
+- Wiring frontend to backend APIs
+- State management (Vuex/Pinia) integration
+- Event handling between components
+- Error handling and user feedback
+
+### Testing Tasks
+- Unit tests for composables and services
+- Component tests with Vue Test Utils
+- RSpec tests for Rails code
+- Accessibility tests with axe-core
+- Manual testing checklist (keyboard nav, screen readers)
+- Cross-browser testing
+- Mobile device testing
+
+### Compliance & Documentation
+- Accessibility audit and WCAG 2.1 AA verification
+- Security review (if handling PII/financial data)
+- Update relevant documentation
+- Create/update Jira tickets
+- Code review preparation
+
+## Output Format
+
+The generated task list must follow this structure:
+
+```markdown
+# Implementation Tasks: [Feature Name]
+
+Generated from: `[prd-filename].md`
+
+## Relevant Files
+
+### Frontend (Vue.js)
+
+**New Files:**
+- `app/javascript/src/components/[ComponentName]/[ComponentName].vue` - Main component implementing [brief description]
+- `app/javascript/src/components/[ComponentName]/[ComponentName].test.js` - Component tests
+- `app/javascript/src/composables/use[ComposableName].js` - Composable for [brief description]
+- `app/javascript/src/composables/use[ComposableName].test.js` - Composable unit tests
+
+**Modified Files:**
+- `app/javascript/src/components/[ExistingComponent].vue` - Update to [brief description]
+
+### Backend (Rails)
+
+**New Files:**
+- `app/controllers/api/v1/[resource]_controller.rb` - API endpoint for [brief description]
+- `app/models/[model_name].rb` - Model for [brief description]
+- `spec/requests/api/v1/[resource]_spec.rb` - Request specs
+- `spec/models/[model_name]_spec.rb` - Model specs
+
+**Modified Files:**
+- `app/controllers/[existing]_controller.rb` - Add [brief description]
+
+### Database
+- `db/migrate/[timestamp]_[migration_name].rb` - Migration to [brief description]
+
+### Testing Infrastructure
+- `.storybook/stories/[ComponentName].stories.js` - Storybook documentation
+- `cypress/e2e/[feature].cy.js` - E2E tests
+
+### Notes
+
+#### Running Tests
+- **Vue.js Unit Tests:** `npm run test:unit` or `npm run test:unit -- [path/to/test]`
+- **RSpec Tests:** `bundle exec rspec` or `bundle exec rspec spec/[path/to/spec]`
+- **Accessibility Tests:** `npm run test:a11y`
+- **E2E Tests:** `npm run cypress:open`
+
+#### Development Server
+- **Rails:** `bundle exec rails s`
+- **Vue Dev Server:** `npm run serve`
+- **Full Stack:** `./init` (check repo-specific startup script)
+
+## Tasks
+
+- [ ] 1.0 Backend Foundation
+  - [ ] 1.1 Create Rails model with validations and associations
+    - Define schema in migration
+    - Add model validations (presence, format, custom)
+    - Write RSpec model tests (validations, associations, scopes)
+    - Target: 90%+ test coverage
+  - [ ] 1.2 Create API controller and endpoints
+    - Define routes in `config/routes.rb`
+    - Implement controller actions (index, show, create, update, destroy as needed)
+    - Add error handling and status codes
+    - Write RSpec request specs
+  - [ ] 1.3 Implement business logic and authorization
+    - Add Pundit policies (if needed)
+    - Implement service objects for complex operations
+    - Add audit logging (if required by PRD)
+    - Write tests for policies and services
+
+- [ ] 2.0 Frontend Composables & Services
+  - [ ] 2.1 Create composables for business logic
+    - Extract reusable state and logic
+    - Implement using Vue Composition API
+    - Add TypeScript types (if applicable)
+    - Write unit tests with 90%+ coverage
+  - [ ] 2.2 Create service class for API communication
+    - Implement CRUD methods with proper error handling
+    - Add request/response transformations
+    - Mock API responses in tests
+    - Write comprehensive unit tests
+
+- [ ] 3.0 UI Components
+  - [ ] 3.1 Create main component structure
+    - Build component using composition API
+    - Implement props, emits, and slots
+    - Add proper TypeScript interfaces
+    - Ensure component < 300 lines
+  - [ ] 3.2 Implement accessibility features
+    - Add ARIA labels and roles
+    - Implement keyboard navigation (Tab, Enter, Escape)
+    - Ensure focus management
+    - Add screen reader announcements
+    - Verify color contrast (4.5:1 minimum)
+    - Ensure touch targets are 48x48px minimum
+  - [ ] 3.3 Add form validation and error handling
+    - Client-side validation with clear error messages
+    - Display errors accessibly (aria-describedby, role="alert")
+    - Real-time validation feedback
+    - Write validation tests
+
+- [ ] 4.0 Integration & Wiring
+  - [ ] 4.1 Connect frontend to backend API
+    - Wire service class to composables
+    - Implement loading states
+    - Add error handling with user feedback
+    - Test success and error paths
+  - [ ] 4.2 State management integration
+    - Add Vuex/Pinia store module (if needed)
+    - Implement actions, mutations, getters
+    - Wire components to store
+    - Write store tests
+  - [ ] 4.3 Component integration
+    - Integrate new component into parent
+    - Handle event propagation
+    - Test component interactions
+    - Verify data flow
+
+- [ ] 5.0 Testing & Quality Assurance
+  - [ ] 5.1 Write comprehensive unit tests
+    - Composables: 90%+ coverage
+    - Services: 90%+ coverage
+    - Components: Focus on behavior, not implementation
+    - Run full test suite: All tests passing
+  - [ ] 5.2 Accessibility testing
+    - Run axe-core automated tests (0 violations)
+    - Manual keyboard navigation testing
+    - Screen reader testing (NVDA, JAWS, VoiceOver)
+    - Document any accessibility notes
+  - [ ] 5.3 Integration and E2E testing
+    - Write E2E tests for critical user flows
+    - Test error scenarios
+    - Verify responsive behavior
+    - Cross-browser testing (Chrome, Firefox, Safari, Edge)
+  - [ ] 5.4 Manual testing checklist
+    - Test all user stories from PRD
+    - Verify edge cases
+    - Test with production-like data volumes
+    - Mobile device testing (if required)
+
+- [ ] 6.0 Documentation & Compliance
+  - [ ] 6.1 Code documentation
+    - Add JSDoc comments to composables
+    - Document component props and events
+    - Update README if needed
+    - Add Storybook stories (if applicable)
+  - [ ] 6.2 Accessibility documentation
+    - Document keyboard shortcuts
+    - Note screen reader behavior
+    - List any WCAG considerations
+    - Create accessibility testing checklist
+  - [ ] 6.3 Security review (if handling sensitive data)
+    - Verify input sanitization
+    - Check authorization logic
+    - Verify audit logging implementation
+    - Review PII handling
+  - [ ] 6.4 Jira ticket cleanup
+    - Update ticket status
+    - Add implementation notes
+    - Link related tickets
+    - Update estimates vs. actual
+
+- [ ] 7.0 Code Review & Deployment Prep
+  - [ ] 7.1 Self-review
+    - Run linters (ESLint, RuboCop)
+    - Review for code smells
+    - Verify no console.logs or debuggers
+    - Check for hardcoded values
+  - [ ] 7.2 Prepare PR description
+    - Summarize changes
+    - Link to PRD and tasks
+    - Add screenshots/videos
+    - Note breaking changes (if any)
+    - List testing performed
+  - [ ] 7.3 Request code review
+    - Tag appropriate reviewers
+    - Address feedback iteratively
+    - Update tests based on feedback
+  - [ ] 7.4 Deployment preparation
+    - Verify migrations are safe
+    - Check for feature flags needed
+    - Document rollback procedure
+    - Confirm monitoring/alerts (if needed)
+
+```
+
+## Interaction Model
+
+1. After generating parent tasks (1.0, 2.0, etc.), AI pauses
+2. AI prompts: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
+3. User confirms with "Go"
+4. AI generates detailed sub-tasks for each parent task
+
+## Task Complexity Guidelines
+
+### Simple Tasks (1-2 hours)
+- Creating a simple composable
+- Adding a single form field
+- Writing tests for small unit
+
+### Medium Tasks (4-8 hours)
+- Creating a new component with multiple features
+- Refactoring an existing component
+- Writing comprehensive test suite
+
+### Complex Tasks (1-3 days)
+- Building complete feature with backend + frontend
+- Large-scale refactoring
+- Complex integration work
+
+**Note:** If a sub-task seems > 8 hours, break it down further.
+
+## Accessibility Verification Checklist
+
+Every task list should include verification for:
+- [ ] Keyboard navigation works (Tab, Shift+Tab, Enter, Escape)
+- [ ] Focus indicators are visible
+- [ ] Screen reader announces all interactive elements
+- [ ] Form errors are announced and linked to fields
+- [ ] Color contrast meets 4.5:1 ratio
+- [ ] Touch targets are 48x48px minimum
+- [ ] No keyboard traps
+- [ ] ARIA labels are present and accurate
+- [ ] Dynamic content changes are announced
+
+## Target Audience
+
+**Junior to mid-level developers** implementing the feature. Tasks should:
+- Be granular enough to complete in < 4 hours each
+- Include clear acceptance criteria
+- Reference specific files and line numbers where helpful
+- Provide testing commands
+- Note dependencies between tasks
+
+---
+
+**Remember:** This is a banking application where code quality, accessibility, and security are critical. Every task should account for these requirements.

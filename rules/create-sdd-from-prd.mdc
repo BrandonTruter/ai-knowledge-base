@@ -1,0 +1,238 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Rule: Creating World-Class System Design Documents from PRDs
+
+## Goal
+
+Transform Product Requirements Documents into comprehensive, enterprise-grade System Design Documents that provide clear technical roadmaps for engineering teams. The SDD should translate business requirements into actionable technical specifications while maintaining architectural excellence and scalability.
+
+## Process Overview
+
+### Phase 1: PRD Analysis & Context Building (Discovery)
+1. **Comprehensive PRD Analysis**: Deep dive into all sections of the PRD
+2. **Requirements Extraction**: Map functional and non-functional requirements
+3. **Stakeholder Alignment**: Identify technical decision-makers and constraints
+4. **Technical Constraints Discovery**: Understand existing systems, tech stack, and limitations
+
+### Phase 2: Technical Solution Design (Architecture)
+1. **System Architecture Design**: Create high-level and detailed architecture
+2. **Technology Stack Selection**: Choose appropriate technologies with justification
+3. **API & Interface Design**: Define system interfaces and contracts
+4. **Data Architecture**: Design database schemas and data flow
+
+### Phase 3: Implementation Planning (Engineering)
+1. **Component Breakdown**: Detailed technical component specifications
+2. **Integration Strategy**: Plan for third-party and internal system integration
+3. **Testing & Quality Assurance**: Define testing strategies and quality gates
+4. **Deployment & Operations**: Plan deployment, monitoring, and maintenance
+
+## SDD Structure & Content Requirements
+
+### 1. Executive Summary & Context
+- **Project Overview**: Technical summary linking to business objectives from PRD
+- **Architecture Philosophy**: High-level approach and design principles
+- **Key Technical Decisions**: Major technology choices and their rationale
+- **Success Criteria**: Technical metrics and engineering objectives
+
+### 2. Requirements Analysis
+- **Functional Requirements Mapping**: Direct translation from PRD to technical specs
+- **Non-Functional Requirements**: Performance, scalability, security, reliability
+- **Technical Constraints**: Existing systems, compliance, technology limitations
+- **Assumptions & Dependencies**: Technical assumptions and external dependencies
+
+### 3. System Architecture
+- **High-Level Architecture Diagram**: Visual representation of system components
+- **Component Architecture**: Detailed breakdown of system components
+- **Data Flow Diagrams**: How data moves through the system
+- **Technology Stack**: Detailed technology selection with justification
+
+### 4. Detailed Technical Design
+
+#### 4.1 Backend Architecture
+- **Service Layer Design**: Microservices, APIs, business logic organization
+- **Database Design**: Schema design, relationships, indexing strategy
+- **Caching Strategy**: Redis, in-memory caching, CDN usage
+- **Security Architecture**: Authentication, authorization, encryption
+
+#### 4.2 Frontend Architecture (if applicable)
+- **UI/UX Technical Implementation**: Component architecture, state management
+- **API Integration**: How frontend communicates with backend services
+- **Performance Optimization**: Loading strategies, caching, responsiveness
+- **Progressive Enhancement**: Accessibility, mobile-first design
+
+#### 4.3 Integration Architecture
+- **Third-Party Integrations**: APIs, webhooks, data synchronization
+- **Internal System Integration**: Legacy system communication
+- **Event-Driven Architecture**: Event sourcing, message queues, pub-sub patterns
+- **API Gateway Design**: Rate limiting, authentication, routing
+
+### 5. Data Architecture
+- **Database Schema Design**: Entity-relationship diagrams, table structures
+- **Data Migration Strategy**: How to transition from existing data
+- **Data Governance**: Privacy, compliance, data retention policies
+- **Backup & Recovery**: Data protection and disaster recovery plans
+
+### 6. Security & Compliance
+- **Security Architecture**: Defense-in-depth strategy, threat modeling
+- **Authentication & Authorization**: User management, role-based access
+- **Data Protection**: Encryption at rest and in transit, PII handling
+- **Compliance Framework**: GDPR, SOC2, industry-specific requirements
+
+### 7. Performance & Scalability
+- **Performance Targets**: Response times, throughput, concurrent users
+- **Scalability Strategy**: Horizontal vs vertical scaling, auto-scaling
+- **Load Testing Plan**: Performance validation and bottleneck identification
+- **Monitoring & Observability**: Metrics, logging, alerting strategies
+
+### 8. Testing Strategy
+- **Testing Pyramid**: Unit, integration, end-to-end testing approach
+- **Test Automation**: CI/CD integration, automated testing frameworks
+- **Quality Gates**: Code coverage, security scanning, performance benchmarks
+- **Manual Testing**: Exploratory testing, usability testing, edge cases
+
+### 9. Deployment & Operations
+- **Deployment Architecture**: Infrastructure as code, containerization
+- **CI/CD Pipeline**: Build, test, deploy automation
+- **Environment Strategy**: Development, staging, production environments
+- **Monitoring & Alerting**: System health, performance metrics, error tracking
+
+### 10. Development Planning
+- **Technical Milestones**: Engineering deliverables and timelines
+- **Risk Assessment**: Technical risks and mitigation strategies
+- **Resource Requirements**: Team structure, skills, external dependencies
+- **Quality Assurance**: Code review processes, technical standards
+
+## AI Assistant Instructions
+
+### Step 1: PRD Analysis & Clarification
+- **Analyze the provided PRD thoroughly** - examine all sections for technical implications
+- **Ask clarifying questions** about technical constraints, existing systems, and team capabilities
+- **Identify gaps** in technical requirements that need definition
+- **Validate assumptions** about technology stack, scalability needs, and integration requirements
+
+### Step 2: Technical Solution Design
+- **Create comprehensive architecture diagrams** using appropriate diagramming tools
+- **Justify technology choices** based on requirements, team expertise, and scalability needs
+- **Design for maintainability** - prioritize clean architecture and technical debt avoidance
+- **Consider enterprise patterns** - follow established architectural patterns and best practices
+
+### Step 3: Implementation Planning
+- **Break down complex systems** into manageable components with clear interfaces
+- **Plan for testing** at every level - unit, integration, end-to-end
+- **Design for observability** - include monitoring, logging, and debugging from the start
+- **Create deployment strategy** that minimizes risk and enables rapid iteration
+
+## Quality Standards
+
+### Technical Excellence
+- **Follow SOLID principles** and clean architecture patterns
+- **Design for testability** - ensure all components can be unit tested
+- **Security by design** - incorporate security considerations from the ground up
+- **Performance optimization** - design for efficiency and scalability
+
+### Documentation Excellence
+- **Clear technical communication** - use diagrams, code examples, and detailed explanations
+- **Maintainable documentation** - structure content for easy updates and reference
+- **Team collaboration** - write for both senior and junior developers
+- **Version control** - track changes and maintain document evolution
+
+### Engineering Best Practices
+- **Code quality standards** - define coding conventions and review processes
+- **Test-driven development** - specify testing requirements and coverage expectations
+- **Continuous integration** - integrate quality checks into development workflow
+- **Operational excellence** - plan for monitoring, alerting, and incident response
+
+## Output Format
+
+### Document Structure
+- **Markdown format** with clear hierarchical organization
+- **Visual diagrams** embedded or linked (architecture, data flow, sequence diagrams)
+- **Code examples** where appropriate to illustrate technical concepts
+- **Decision matrices** for technology choices and trade-offs
+
+### File Organization
+- **Location**: `/tasks/sdd-[project-name].md`
+- **Accompanying files**: Diagrams, schemas, API specifications in separate files
+- **Version control**: Clear versioning strategy and change log
+- **Review process**: Defined stakeholder review and approval workflow
+
+## Success Criteria
+
+### Technical Clarity
+- **Unambiguous specifications** that eliminate guesswork for developers
+- **Complete technical coverage** of all functional and non-functional requirements
+- **Actionable implementation plan** with clear next steps and deliverables
+- **Risk mitigation** with identified technical risks and mitigation strategies
+
+### Team Alignment
+- **Stakeholder buy-in** from engineering, product, and business teams
+- **Clear communication** of technical decisions and their business impact
+- **Realistic timeline** based on technical complexity and team capacity
+- **Quality assurance** plan that ensures delivery of robust, scalable solutions
+
+## Common Pitfalls to Avoid
+
+### Over-Engineering
+- **Avoid unnecessary complexity** - choose the simplest solution that meets requirements
+- **Don't gold-plate** - focus on business value and essential technical requirements
+- **Resist feature creep** - stick to PRD scope while designing for future extensibility
+
+### Under-Engineering
+- **Don't skip non-functional requirements** - performance, security, scalability are critical
+- **Avoid technical debt** - design for maintainability and long-term evolution
+- **Don't ignore operations** - plan for deployment, monitoring, and maintenance
+
+### Communication Failures
+- **Avoid technical jargon** when communicating with non-technical stakeholders
+- **Don't assume knowledge** - explain technical concepts clearly and thoroughly
+- **Provide context** - connect technical decisions to business objectives and user impact
+
+## Integration with Development Workflow
+
+### Agile Integration
+- **Sprint planning compatibility** - break down SDD components into sprint-sized tasks
+- **Story mapping** - connect technical components to user stories and business value
+- **Iterative refinement** - plan for SDD evolution as implementation progresses
+- **Regular reviews** - schedule technical reviews and architecture evolution discussions
+
+### Team Collaboration
+- **Cross-functional input** - involve DevOps, QA, and security teams in design process
+- **Knowledge sharing** - document decisions and rationale for team learning
+- **Mentoring opportunities** - use SDD creation as learning opportunity for junior developers
+- **Feedback loops** - establish mechanisms for continuous improvement of SDD process
+
+## AI Assistant Behavior Guidelines
+
+### Be Thorough and Systematic
+- **Ask comprehensive questions** to understand all technical requirements
+- **Consider edge cases** and error scenarios in technical design
+- **Plan for evolution** - design systems that can grow and change over time
+- **Validate assumptions** with stakeholders before proceeding
+
+### Maintain Technical Excellence
+- **Follow established patterns** - use proven architectural and design patterns
+- **Consider scalability** from the beginning - design for growth
+- **Prioritize security** - implement security best practices throughout
+- **Optimize for maintainability** - write technical specifications that future developers will appreciate
+
+### Communicate Effectively
+- **Use visual aids** - diagrams, flowcharts, and mockups to illustrate concepts
+- **Provide examples** - include code snippets and configuration examples
+- **Explain trade-offs** - clearly articulate the pros and cons of technical decisions
+- **Connect to business value** - always tie technical decisions back to business objectives
+
+### Final Validation
+Before considering the SDD complete, verify:
+- [ ] All PRD requirements are addressed with technical solutions
+- [ ] Architecture supports scalability and performance requirements
+- [ ] Security and compliance requirements are fully integrated
+- [ ] Testing and quality assurance strategies are comprehensive
+- [ ] Deployment and operations plans are realistic and detailed
+- [ ] Technical risks are identified with mitigation strategies
+- [ ] Documentation is clear, complete, and actionable for the development team
+
+This SDD should serve as the definitive technical blueprint that bridges the gap between business requirements and engineering implementation, ensuring successful product delivery while maintaining high standards of technical excellence.
