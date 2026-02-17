@@ -1,0 +1,315 @@
+---
+description: Generate PRD for aws-omni-channel-application features with banking compliance
+globs:
+alwaysApply: false
+---
+# Rule: Generating Product Requirements Document (PRD) for aws-omni-channel-application
+
+## Goal
+
+To guide AI in creating a detailed, banking-compliant PRD in Markdown format for features in the nCino Omni Channel Application. PRDs must account for Rails/Vue.js architecture, WCAG 2.1 AA accessibility standards, and financial services regulatory requirements.
+
+## Repository Context
+
+**Tech Stack:**
+- Backend: Ruby on Rails
+- Frontend: Vue.js (composition API preferred)
+- Testing: RSpec (Rails), Jest/Vitest (Vue.js)
+- Component Library: Vuetify
+- State Management: Vuex/Pinia
+- Styling: SCSS with design tokens
+
+**Key Directories:**
+- `app/javascript/src/` - Vue.js components and composables
+- `app/controllers/` - Rails controllers
+- `spec/` - RSpec tests
+- `app/javascript/test/` - Vue.js tests
+
+## Process
+
+1. **Receive Initial Prompt:** User describes a new feature or refactoring task
+2. **Ask Clarifying Questions:** Gather requirements with multiple-choice options for easy response
+3. **Generate PRD:** Create structured document following enterprise banking standards
+4. **Save PRD:** Store as `tasks/prd-[feature-name].md`
+
+## Clarifying Questions
+
+Adapt based on prompt, prioritizing:
+
+### Functional Requirements
+- **Problem/Goal:** "What business problem does this solve?" or "What user pain point are we addressing?"
+- **Target User:** "Who uses this feature? (Loan Officers / Borrowers / Both / Admin)"
+- **Core Actions:** "What are the 3-5 key user actions this feature enables?"
+- **User Stories:** "Provide 2-3 user stories: As a [user type], I want to [action] so that [benefit]"
+
+### Banking/Compliance Requirements
+- **Data Sensitivity:** "Does this feature handle:
+  a) PII (Personal Identifiable Information)
+  b) Financial data
+  c) Both
+  d) Neither"
+- **Accessibility:** "Are there specific WCAG 2.1 AA requirements beyond standard compliance?"
+- **Audit Trail:** "Does this feature require audit logging? If yes, what events?"
+
+### Technical Considerations
+- **Component Type:** "Is this:
+  a) New feature (greenfield)
+  b) Refactoring existing component
+  c) Enhancement to existing feature
+  d) Bug fix with architectural changes"
+- **Data Flow:** "Describe the data flow: Frontend → API → Database"
+- **State Management:** "Does this require:
+  a) Local component state only
+  b) Shared state (Vuex/Pinia)
+  c) Backend session state
+  d) Mixed approach"
+- **Existing Components:** "Are there existing components to reference or refactor?"
+
+### Design & UI
+- **Design Assets:** "Do you have:
+  a) Figma designs (provide link)
+  b) Screenshots/mockups
+  c) Existing similar component to reference
+  d) Verbal description only"
+- **Responsive Requirements:** "Must work on:
+  a) Desktop only
+  b) Desktop + Tablet
+  c) Desktop + Tablet + Mobile (touch-optimized)"
+
+### Integration & Dependencies
+- **Backend Changes:** "Does this require:
+  a) New Rails controllers/models
+  b) Modifications to existing controllers
+  c) GraphQL changes
+  d) No backend changes"
+- **External Systems:** "Integrations needed with:
+  a) LOS (Loan Origination System)
+  b) Credit reporting services
+  c) Document management
+  d) None"
+
+### Testing & Quality
+- **Success Criteria:** "How do we measure success?
+  - User can complete [action] in < X seconds
+  - Reduction in support tickets by X%
+  - Accessibility audit passes
+  - Other (specify)"
+- **Edge Cases:** "Critical scenarios to test?"
+
+## PRD Structure
+
+### 1. Introduction/Overview
+Brief description of the feature, business problem, and strategic goal.
+
+### 2. Goals & Success Metrics
+- Specific, measurable objectives
+- Definition of done
+- Performance benchmarks (if applicable)
+
+### 3. User Stories
+Detail user narratives with acceptance criteria:
+```
+As a [user type],
+I want to [action],
+So that [benefit].
+
+Acceptance Criteria:
+- [ ] Criterion 1
+- [ ] Criterion 2
+```
+
+### 4. Functional Requirements
+Numbered list of specific functionalities with clear, testable descriptions.
+
+**Example:**
+```
+FR-1: The system must validate account ownership before allowing transfers
+FR-2: Error messages must be screen-reader accessible and displayed near the relevant field
+FR-3: All form inputs must support keyboard navigation (Tab, Enter, Escape)
+```
+
+### 5. Accessibility Requirements (WCAG 2.1 AA)
+Specific accessibility compliance needs:
+- Keyboard navigation patterns
+- Screen reader announcements
+- Color contrast requirements
+- Focus management
+- Error handling for assistive tech
+- Touch target sizes (minimum 48x48px for mobile)
+
+### 6. Security & Compliance
+- Data handling requirements
+- PII protection measures
+- Audit logging needs
+- Session management
+- Input validation/sanitization
+
+### 7. Technical Architecture
+
+#### Frontend (Vue.js)
+- Component structure (composition API preferred)
+- Composables to create/reuse
+- State management approach
+- Event handling
+
+#### Backend (Rails)
+- Controllers/actions needed
+- Model changes
+- API endpoints (REST or GraphQL)
+- Validation logic
+
+#### Integration Points
+- External services
+- Existing modules to modify
+
+### 8. Component Specifications
+For UI components, detail:
+- Props and their types
+- Emitted events
+- Slots (if applicable)
+- Accessibility attributes
+- Responsive behavior
+
+### 9. Testing Requirements
+
+#### Frontend Tests
+- Unit tests for composables (Jest/Vitest)
+- Component tests
+- Accessibility tests (axe-core)
+- Visual regression tests (if applicable)
+
+#### Backend Tests
+- RSpec controller tests
+- Model tests
+- Integration tests
+
+#### Manual Testing
+- Browser compatibility
+- Screen reader testing (NVDA/JAWS/VoiceOver)
+- Mobile device testing
+
+### 10. Migration & Rollout Strategy
+For refactoring or breaking changes:
+- Backward compatibility plan
+- Feature flag approach
+- Gradual rollout phases
+- Rollback procedures
+
+### 11. Non-Goals (Out of Scope)
+Clear boundaries to manage scope creep.
+
+### 12. Design Assets & References
+- Figma links
+- Existing component references
+- UI pattern library links
+
+### 13. Open Questions
+Remaining uncertainties requiring clarification before implementation.
+
+### 14. Dependencies & Blockers
+- Required features/changes from other teams
+- External approvals needed
+- Technical debt that must be addressed first
+
+## Target Audience
+
+**Junior to Mid-level developers** who will implement the feature. Requirements must be:
+- Explicit and unambiguous
+- Include code pattern examples where helpful
+- Reference existing components as templates
+- Avoid banking jargon (or define when used)
+
+## Output Specifications
+
+- **Format:** Markdown (`.md`)
+- **Location:** `tasks/`
+- **Filename:** `prd-[feature-name].md`
+  - Use kebab-case
+  - Keep concise but descriptive
+  - Example: `prd-multi-account-refactoring.md`
+
+## Repository-Specific Conventions
+
+### Component Naming
+- PascalCase for Vue components: `AccountCard.vue`
+- Composables: `use` prefix, camelCase: `useAccountValidation.js`
+- Test files: Same name + `.spec.js` or `.test.js`
+
+### File Organization
+```
+app/javascript/src/
+├── components/
+│   ├── AccountCard/
+│   │   ├── AccountCard.vue
+│   │   ├── AccountCard.test.js
+│   │   └── index.js
+│   └── ...
+├── composables/
+│   ├── useAccountValidation.js
+│   ├── useAccountValidation.test.js
+│   └── ...
+├── services/
+│   └── AccountService.js
+└── utils/
+```
+
+### Accessibility Standards
+All PRDs must specify:
+- ARIA labels for interactive elements
+- Keyboard shortcuts (if custom)
+- Focus trap behavior (for modals/dialogs)
+- Screen reader announcements for dynamic content
+- Form validation error patterns
+
+### Code Quality Standards
+PRDs should specify:
+- Maximum component size target (< 300 lines preferred)
+- Test coverage target (90%+)
+- Performance budgets (if applicable)
+- Code review requirements
+
+## Final Instructions
+
+1. **DO NOT** start implementing the PRD
+2. **ALWAYS** ask clarifying questions first
+3. **WAIT** for user answers before generating final PRD
+4. **ITERATE** - Refine PRD based on user feedback
+5. **VALIDATE** - Ensure all banking compliance sections are complete
+
+## Example PRD Snippet
+
+```markdown
+## Functional Requirements
+
+### Account Selection & Validation
+
+**FR-1: Account Type Validation**
+The system must validate that selected account types are eligible for the operation before proceeding.
+- Checking accounts: All operations supported
+- Savings accounts: Transfer limits apply (Reg D)
+- CD accounts: Limited to viewing only
+
+**FR-2: Multi-Account Support**
+Users must be able to select multiple accounts of the same product type for batch operations.
+- Minimum: 1 account
+- Maximum: 5 accounts per operation
+- Visual indication of selected accounts count
+
+## Accessibility Requirements
+
+### Keyboard Navigation
+- Tab order follows visual flow: Account selector → Amount field → Submit button
+- Enter key on account card toggles selection
+- Escape key clears all selections
+- Screen reader announces: "Account [name] selected, [X] of 5 maximum"
+
+### Error Handling
+- Errors displayed above form with role="alert"
+- Focus automatically moved to error message
+- Errors linked to fields with aria-describedby
+- Clear, actionable error text (no error codes)
+```
+
+---
+
+**Remember:** This is a financial services application where accessibility and compliance are non-negotiable. Every PRD must demonstrate consideration of these requirements.

@@ -1,2 +1,7 @@
-.env
-.env.local
+.claude/
+.vscode/
+.cursorindexingignore
+.snapshots
+.specstory
+.DS_Store
+.mcp-debug-tools/config.json
